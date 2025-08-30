@@ -27,6 +27,20 @@ function throwError() {
 }
 throwError().catch((err) => console.error("Promise catch:", err.message));
 // 4. Use .then() and .catch() to handle a Promise that returns a random number.
+const randomNumberPromise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        const num = Math.random();
+        if (num >= 0) {
+            resolve(num);
+        }
+        else {
+            reject(new Error("Failed to generate number"));
+        }
+    }, 1000);
+});
+randomNumberPromise
+    .then((num) => console.log("Random number:", num))
+    .catch((err) => console.error("Error:", err.message));
 // 5. Create a function simulateTask(time) that returns a Promise resolving with "Task
 // done" after time ms.
 // 6. Use Promise.all() to run 3 simulated Promises in parallel and print the result.
