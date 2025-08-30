@@ -9,7 +9,15 @@ const promise1 = new Promise<string>((resolve) => {
 promise1.then((message) => console.log(message));
 
 // 2. Write a function that returns a Promise resolving with the number 10 after 1 second.
+function getNumber(): Promise<number> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(10);
+    }, 1000);
+  });
+}
 
+getNumber().then((num) => console.log("Promise then:", num));
 // 3. Write a function that rejects a Promise with the error "Something went wrong" after 1
 // second.
 // 4. Use .then() and .catch() to handle a Promise that returns a random number.
