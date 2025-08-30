@@ -87,4 +87,16 @@ Promise.resolve(2)
   .then((result) => console.log("Promise chain result:", result));
 
 // 9. Write a Promise that reads an array after 1 second and filters even numbers.
+function filterEvenNumbers(arr: number[]): Promise<number[]> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(arr.filter((num) => num % 2 === 0));
+    }, 1000);
+  });
+}
+
+filterEvenNumbers([1, 2, 3, 4, 5, 6]).then((evens) => {
+  console.log("Even numbers:", evens);
+});
+
 // 10. Use .finally() to log "Done" when a Promise finishes (success or failure).
