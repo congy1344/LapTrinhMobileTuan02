@@ -40,9 +40,9 @@ const randomNumberPromise = new Promise<number>((resolve, reject) => {
   }, 1000);
 });
 
-randomNumberPromise
-  .then((num) => console.log("Random number:", num))
-  .catch((err) => console.error("Error:", err.message));
+// randomNumberPromise
+//   .then((num) => console.log("Random number:", num))
+//   .catch((err) => console.error("Error:", err.message));
 
 // 5. Create a function simulateTask(time) that returns a Promise resolving with "Task
 // done" after time ms.
@@ -73,11 +73,11 @@ function simulateTask(time: number): Promise<string> {
 // });
 
 // 7. Use Promise.race() to return whichever Promise resolves first.
-Promise.race([simulateTask(3000), simulateTask(4000), simulateTask(5000)]).then(
-  (result) => {
-    console.log("First task done:", result);
-  }
-);
+// Promise.race([simulateTask(3000), simulateTask(4000), simulateTask(5000)]).then(
+//   (result) => {
+//     console.log("First task done:", result);
+//   }
+// );
 
 // 8. Create a Promise chain: square the number 2, then double it, then add 5.
 Promise.resolve(2)
@@ -100,3 +100,7 @@ filterEvenNumbers([1, 2, 3, 4, 5, 6]).then((evens) => {
 });
 
 // 10. Use .finally() to log "Done" when a Promise finishes (success or failure).
+simulateTask(2000)
+  .then((message) => console.log(message))
+  .catch((error) => console.error("Error:", error))
+  .finally(() => console.log("Done"));
