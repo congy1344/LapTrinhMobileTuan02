@@ -17,8 +17,15 @@ function getNumber() {
     });
 }
 getNumber().then((num) => console.log("Promise then:", num));
-// 3. Write a function that rejects a Promise with the error "Something went wrong" after 1
-// second.
+// 3. Write a function that rejects a Promise with the error "Something went wrong" after 1 second.
+function throwError() {
+    return new Promise((_, reject) => {
+        setTimeout(() => {
+            reject(new Error("Something went wrong"));
+        }, 1000);
+    });
+}
+throwError().catch((err) => console.error("Promise catch:", err.message));
 // 4. Use .then() and .catch() to handle a Promise that returns a random number.
 // 5. Create a function simulateTask(time) that returns a Promise resolving with "Task
 // done" after time ms.
