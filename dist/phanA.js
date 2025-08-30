@@ -43,6 +43,14 @@ randomNumberPromise
     .catch((err) => console.error("Error:", err.message));
 // 5. Create a function simulateTask(time) that returns a Promise resolving with "Task
 // done" after time ms.
+function simulateTask(time) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("Task done");
+        }, time);
+    });
+}
+simulateTask(3000).then((message) => console.log(message));
 // 6. Use Promise.all() to run 3 simulated Promises in parallel and print the result.
 // 7. Use Promise.race() to return whichever Promise resolves first.
 // 8. Create a Promise chain: square the number 2, then double it, then add 5.
