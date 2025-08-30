@@ -80,5 +80,11 @@ Promise.race([simulateTask(3000), simulateTask(4000), simulateTask(5000)]).then(
 );
 
 // 8. Create a Promise chain: square the number 2, then double it, then add 5.
+Promise.resolve(2)
+  .then((num) => num * num)
+  .then((num) => num * 2)
+  .then((num) => num + 5)
+  .then((result) => console.log("Promise chain result:", result));
+
 // 9. Write a Promise that reads an array after 1 second and filters even numbers.
 // 10. Use .finally() to log "Done" when a Promise finishes (success or failure).
