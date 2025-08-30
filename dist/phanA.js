@@ -46,44 +46,32 @@ randomNumberPromise
 function simulateTask(time) {
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve("Task done");
+            resolve("Task " + time + " time done");
         }, time);
     });
 }
 // simulateTask(3000).then((message) => console.log(message));
 // 6. Use Promise.all() to run 3 simulated Promises in parallel and print the result.
-// const p1 = simulateTask(3000).then((msg) => {
-//   console.log("Task 1:", msg);
-//   return msg;
-// });
-// const p2 = simulateTask(4000).then((msg) => {
-//   console.log("Task 2:", msg);
-//   return msg;
-// });
-// const p3 = simulateTask(5000).then((msg) => {
-//   console.log("Task 3:", msg);
-//   return msg;
-// });
-// Promise.all([p1, p2, p3]).then((results) => {
+// Promise.all([
+//   simulateTask(3000).then((msg) => {
+//     console.log("Task 1:", msg);
+//     return msg;
+//   }),
+//   simulateTask(4000).then((msg) => {
+//     console.log("Task 2:", msg);
+//     return msg;
+//   }),
+//   simulateTask(5000).then((msg) => {
+//     console.log("Task 3:", msg);
+//     return msg;
+//   }),
+// ]).then((results) => {
 //   console.log("All tasks done:", results);
 // });
-Promise.all([
-    simulateTask(3000).then((msg) => {
-        console.log("Task 1:", msg);
-        return msg;
-    }),
-    simulateTask(4000).then((msg) => {
-        console.log("Task 2:", msg);
-        return msg;
-    }),
-    simulateTask(5000).then((msg) => {
-        console.log("Task 3:", msg);
-        return msg;
-    }),
-]).then((results) => {
-    console.log("All tasks done:", results);
-});
 // 7. Use Promise.race() to return whichever Promise resolves first.
+Promise.race([simulateTask(3000), simulateTask(4000), simulateTask(5000)]).then((result) => {
+    console.log("First task done:", result);
+});
 // 8. Create a Promise chain: square the number 2, then double it, then add 5.
 // 9. Write a Promise that reads an array after 1 second and filters even numbers.
 // 10. Use .finally() to log "Done" when a Promise finishes (success or failure).
